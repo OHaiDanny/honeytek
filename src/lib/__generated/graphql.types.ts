@@ -167,6 +167,7 @@ export type AssetFilter = {
 
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
+  categoryTopicCollection?: Maybe<CategoryTopicCollection>;
   componentDuplexCollection?: Maybe<ComponentDuplexCollection>;
   componentHeroBannerCollection?: Maybe<ComponentHeroBannerCollection>;
   componentInfoBlockCollection?: Maybe<ComponentInfoBlockCollection>;
@@ -176,6 +177,14 @@ export type AssetLinkingCollections = {
   topicBusinessInfoCollection?: Maybe<TopicBusinessInfoCollection>;
   topicPersonCollection?: Maybe<TopicPersonCollection>;
   topicProductCollection?: Maybe<TopicProductCollection>;
+};
+
+
+export type AssetLinkingCollectionsCategoryTopicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -271,6 +280,204 @@ export enum AssetOrder {
   UrlDesc = 'url_DESC',
   WidthAsc = 'width_ASC',
   WidthDesc = 'width_DESC'
+}
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopic = Entry & {
+  __typename?: 'CategoryTopic';
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<CategoryTopicDescription>;
+  featuredImage?: Maybe<Asset>;
+  featuresCollection?: Maybe<CategoryTopicFeaturesCollection>;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<CategoryTopicLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+  targetPage?: Maybe<Entry>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicFeaturedImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicFeaturesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<CategoryTopicFeaturesCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TopicProductFeatureFilter>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
+export type CategoryTopicTargetPageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type CategoryTopicCollection = {
+  __typename?: 'CategoryTopicCollection';
+  items: Array<Maybe<CategoryTopic>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type CategoryTopicDescription = {
+  __typename?: 'CategoryTopicDescription';
+  json: Scalars['JSON'];
+  links: CategoryTopicDescriptionLinks;
+};
+
+export type CategoryTopicDescriptionAssets = {
+  __typename?: 'CategoryTopicDescriptionAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type CategoryTopicDescriptionEntries = {
+  __typename?: 'CategoryTopicDescriptionEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type CategoryTopicDescriptionLinks = {
+  __typename?: 'CategoryTopicDescriptionLinks';
+  assets: CategoryTopicDescriptionAssets;
+  entries: CategoryTopicDescriptionEntries;
+  resources: CategoryTopicDescriptionResources;
+};
+
+export type CategoryTopicDescriptionResources = {
+  __typename?: 'CategoryTopicDescriptionResources';
+  block: Array<CategoryTopicDescriptionResourcesBlock>;
+  hyperlink: Array<CategoryTopicDescriptionResourcesHyperlink>;
+  inline: Array<CategoryTopicDescriptionResourcesInline>;
+};
+
+export type CategoryTopicDescriptionResourcesBlock = ResourceLink & {
+  __typename?: 'CategoryTopicDescriptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type CategoryTopicDescriptionResourcesHyperlink = ResourceLink & {
+  __typename?: 'CategoryTopicDescriptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type CategoryTopicDescriptionResourcesInline = ResourceLink & {
+  __typename?: 'CategoryTopicDescriptionResourcesInline';
+  sys: ResourceSys;
+};
+
+export type CategoryTopicFeaturesCollection = {
+  __typename?: 'CategoryTopicFeaturesCollection';
+  items: Array<Maybe<TopicProductFeature>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export enum CategoryTopicFeaturesCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type CategoryTopicFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CategoryTopicFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CategoryTopicFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
+  features?: InputMaybe<CfTopicProductFeatureNestedFilter>;
+  featuresCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  targetPage_exists?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type CategoryTopicLinkingCollections = {
+  __typename?: 'CategoryTopicLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type CategoryTopicLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum CategoryTopicOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
 /** Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentCta) */
@@ -3506,6 +3713,8 @@ export type Query = {
   _node?: Maybe<_Node>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
+  categoryTopic?: Maybe<CategoryTopic>;
+  categoryTopicCollection?: Maybe<CategoryTopicCollection>;
   componentCta?: Maybe<ComponentCta>;
   componentCtaCollection?: Maybe<ComponentCtaCollection>;
   componentDuplex?: Maybe<ComponentDuplex>;
@@ -3567,6 +3776,23 @@ export type QueryAssetCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetFilter>;
+};
+
+
+export type QueryCategoryTopicArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryCategoryTopicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<CategoryTopicOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CategoryTopicFilter>;
 };
 
 
@@ -4752,8 +4978,18 @@ export type TopicProductFeatureFilter = {
 
 export type TopicProductFeatureLinkingCollections = {
   __typename?: 'TopicProductFeatureLinkingCollections';
+  categoryTopicCollection?: Maybe<CategoryTopicCollection>;
   entryCollection?: Maybe<EntryCollection>;
   topicProductCollection?: Maybe<TopicProductCollection>;
+};
+
+
+export type TopicProductFeatureLinkingCollectionsCategoryTopicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -4772,6 +5008,21 @@ export type TopicProductFeatureLinkingCollectionsTopicProductCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder {
   InternalNameAsc = 'internalName_ASC',

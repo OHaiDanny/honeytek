@@ -90,6 +90,7 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
+  categoryTopicCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CategoryTopicCollection
   componentDuplexCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentDuplexCollection
   componentHeroBannerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
   componentInfoBlockCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentInfoBlockCollection
@@ -122,6 +123,137 @@ enum AssetOrder {
   url_DESC
   width_ASC
   width_DESC
+}
+
+"""
+Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic)
+"""
+type CategoryTopic implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): CategoryTopicDescription
+  featuredImage(locale: String, preview: Boolean): Asset
+  featuresCollection(limit: Int = 100, locale: String, order: [CategoryTopicFeaturesCollectionOrder], preview: Boolean, skip: Int = 0, where: TopicProductFeatureFilter): CategoryTopicFeaturesCollection
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): CategoryTopicLinkingCollections
+  name(locale: String): String
+  sys: Sys!
+  targetPage(locale: String, preview: Boolean): Entry
+}
+
+type CategoryTopicCollection {
+  items: [CategoryTopic]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type CategoryTopicDescription {
+  json: JSON!
+  links: CategoryTopicDescriptionLinks!
+}
+
+type CategoryTopicDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type CategoryTopicDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type CategoryTopicDescriptionLinks {
+  assets: CategoryTopicDescriptionAssets!
+  entries: CategoryTopicDescriptionEntries!
+  resources: CategoryTopicDescriptionResources!
+}
+
+type CategoryTopicDescriptionResources {
+  block: [CategoryTopicDescriptionResourcesBlock!]!
+  hyperlink: [CategoryTopicDescriptionResourcesHyperlink!]!
+  inline: [CategoryTopicDescriptionResourcesInline!]!
+}
+
+type CategoryTopicDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CategoryTopicDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CategoryTopicDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type CategoryTopicFeaturesCollection {
+  items: [TopicProductFeature]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum CategoryTopicFeaturesCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+input CategoryTopicFilter {
+  AND: [CategoryTopicFilter]
+  OR: [CategoryTopicFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  featuredImage_exists: Boolean
+  features: cfTopicProductFeatureNestedFilter
+  featuresCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  sys: SysFilter
+  targetPage_exists: Boolean
+}
+
+type CategoryTopicLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CategoryTopicOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 """
@@ -2411,6 +2543,8 @@ type Query {
   _node(id: ID!, locale: String, preview: Boolean): _Node
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  categoryTopic(id: String!, locale: String, preview: Boolean): CategoryTopic
+  categoryTopicCollection(limit: Int = 100, locale: String, order: [CategoryTopicOrder], preview: Boolean, skip: Int = 0, where: CategoryTopicFilter): CategoryTopicCollection
   componentCta(id: String!, locale: String, preview: Boolean): ComponentCta
   componentCtaCollection(limit: Int = 100, locale: String, order: [ComponentCtaOrder], preview: Boolean, skip: Int = 0, where: ComponentCtaFilter): ComponentCtaCollection
   componentDuplex(id: String!, locale: String, preview: Boolean): ComponentDuplex
@@ -3012,8 +3146,24 @@ input TopicProductFeatureFilter {
 }
 
 type TopicProductFeatureLinkingCollections {
+  categoryTopicCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder], preview: Boolean, skip: Int = 0): CategoryTopicCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   topicProductCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder], preview: Boolean, skip: Int = 0): TopicProductCollection
+}
+
+enum TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder {

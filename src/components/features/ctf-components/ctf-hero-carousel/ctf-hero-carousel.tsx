@@ -3,11 +3,13 @@ import {Container, Theme} from "@mui/material"
 import {makeStyles} from "@mui/styles"
 import clsx from "clsx"
 import Image from "next/image"
+import Carousel from "react-multi-carousel"
 
 import {HeroCarouselFieldsFragment} from "./__generated/ctf-hero-carousel.generated"
 
 import {PageLink} from "@src/components/features/page-link"
 import {getColorConfigFromPalette} from "@src/theme"
+import "react-multi-carousel/lib/styles.css"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -16,13 +18,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(8, 0),
   },
 
+  carouselTitle: {
+    color: "#ff5d2f",
+  },
+
   carouselWrapper: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    padding: theme.spacing(10, 0),
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "126rem",
+    padding: theme.spacing(8, 0, 8),
+    gap: theme.spacing(7),
   },
 
   carouselItemContainer: {
@@ -43,6 +48,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
+const responsive = {
+  desktop: {
+    breakpoint: {max: 3000, min: 1024},
+    items: 4,
+  },
+  tablet: {
+    breakpoint: {max: 1024, min: 464},
+    items: 3,
+  },
+  mobile: {
+    breakpoint: {max: 464, min: 0},
+    items: 1,
+  },
+}
+
 export const CtfHeroCarousel = (props: HeroCarouselFieldsFragment) => {
   const {
     sys: {id},
@@ -61,9 +81,17 @@ export const CtfHeroCarousel = (props: HeroCarouselFieldsFragment) => {
       className={clsx(classes.root)}
       {...inspectorMode({fieldId: "carousel"})}
     >
-      <h1>{internalName}</h1>
+      <h1 className={classes.carouselTitle}>{internalName}</h1>
       {carouselItems && (
-        <section className={classes.carouselWrapper}>
+        <Carousel
+          responsive={responsive}
+          showDots={true}
+          draggable={true}
+          swipeable={true}
+          infinite={true}
+          partialVisbile={false}
+          containerClass={classes.carouselWrapper}
+        >
           {carouselItems.map(
             (item, i) =>
               item &&
@@ -90,7 +118,7 @@ export const CtfHeroCarousel = (props: HeroCarouselFieldsFragment) => {
                 </article>
               ),
           )}
-        </section>
+        </Carousel>
       )}
     </Container>
   )

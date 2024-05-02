@@ -1,9 +1,9 @@
 import {useContentfulLiveUpdates} from "@contentful/live-preview/react"
 import Head from "next/head"
 
+import {useCtfProductDetailPageQuery} from "./__generated/ctf-product-detail-page.generated"
 import CtfProductDetailPage from "./ctf-product-detail-page"
 
-import {useCtfPageQuery} from "@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated"
 import {PageError} from "@src/components/features/errors/page-error"
 import {useContentfulContext} from "@src/contentful-context"
 import {tryget} from "@src/utils"
@@ -19,7 +19,7 @@ const CtfProductDetailPageGgl = ({slug: slugFromProps}: Props) => {
 
   const {previewActive, locale} = useContentfulContext()
 
-  const {isLoading, data} = useCtfPageQuery({
+  const {isLoading, data} = useCtfProductDetailPageQuery({
     slug,
     locale,
     preview: previewActive,
@@ -27,7 +27,7 @@ const CtfProductDetailPageGgl = ({slug: slugFromProps}: Props) => {
 
   console.log(data)
 
-  const page = useContentfulLiveUpdates(tryget(() => data?.pageCollection!.items[0]))
+  const page = useContentfulLiveUpdates(tryget(() => data?.productDetailPageCollection!.items[0]))
 
   if (isLoading) return <></>
   if (!page) {
