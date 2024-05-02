@@ -6,6 +6,7 @@ import {useCtfCtaQuery} from "@src/components/features/ctf-components/ctf-cta/__
 import {useCtfDuplexQuery} from "@src/components/features/ctf-components/ctf-duplex/__generated/ctf-duplex.generated"
 import {useCtfHeroBannerQuery} from "@src/components/features/ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated"
 import {useCtfHeroCarouselQuery} from "@src/components/features/ctf-components/ctf-hero-carousel/__generated/ctf-hero-carousel.generated"
+import {useCtfIconCarouselQuery} from "@src/components/features/ctf-components/ctf-icon-carousel/__generated/ctf-icon-carousel.generated"
 import {useCtfInfoBlockQuery} from "@src/components/features/ctf-components/ctf-info-block/__generated/ctf-info-block.generated"
 import {
   CtfPersonQuery,
@@ -29,6 +30,7 @@ export const prefetchMap = {
   ComponentHeroBanner: useCtfHeroBannerQuery,
   ComponentHeroCarousel: useCtfHeroCarouselQuery,
   ComponentDuplex: useCtfDuplexQuery,
+  ComponentIconCarousel: useCtfIconCarouselQuery,
   ComponentInfoBlock: useCtfInfoBlockQuery,
   ComponentTextBlock: useCtfTextBlockQuery,
   ComponentQuote: useCtfQuoteQuery,

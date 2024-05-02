@@ -238,7 +238,21 @@ input CategoryTopicFilter {
 }
 
 type CategoryTopicLinkingCollections {
+  componentIconCarouselCollection(limit: Int = 100, locale: String, order: [CategoryTopicLinkingCollectionsComponentIconCarouselCollectionOrder], preview: Boolean, skip: Int = 0): ComponentIconCarouselCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum CategoryTopicLinkingCollectionsComponentIconCarouselCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum CategoryTopicOrder {
@@ -848,6 +862,97 @@ enum ComponentHeroCarouselLinkingCollectionsProductDetailPageCollectionOrder {
 }
 
 enum ComponentHeroCarouselOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+The carousel displaying various icons that is located on the landing page [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentIconCarousel)
+"""
+type ComponentIconCarousel implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  iconCarouselCollection(limit: Int = 100, locale: String, order: [ComponentIconCarouselIconCarouselCollectionOrder], preview: Boolean, skip: Int = 0, where: CategoryTopicFilter): ComponentIconCarouselIconCarouselCollection
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ComponentIconCarouselLinkingCollections
+  sys: Sys!
+}
+
+type ComponentIconCarouselCollection {
+  items: [ComponentIconCarousel]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentIconCarouselFilter {
+  AND: [ComponentIconCarouselFilter]
+  OR: [ComponentIconCarouselFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  iconCarousel: cfCategoryTopicNestedFilter
+  iconCarouselCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+type ComponentIconCarouselIconCarouselCollection {
+  items: [CategoryTopic]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ComponentIconCarouselIconCarouselCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ComponentIconCarouselLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentIconCarouselLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentIconCarouselLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentIconCarouselOrder {
   internalName_ASC
   internalName_DESC
   sys_firstPublishedAt_ASC
@@ -2387,7 +2492,7 @@ input PageTopSectionFilter {
   sys: SysFilter
 }
 
-union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
+union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentIconCarousel | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 """
 Container that holds all the content for the product detail. Enables editors to publish a product, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/productDetailPage)
@@ -2553,6 +2658,8 @@ type Query {
   componentHeroBannerCollection(limit: Int = 100, locale: String, order: [ComponentHeroBannerOrder], preview: Boolean, skip: Int = 0, where: ComponentHeroBannerFilter): ComponentHeroBannerCollection
   componentHeroCarousel(id: String!, locale: String, preview: Boolean): ComponentHeroCarousel
   componentHeroCarouselCollection(limit: Int = 100, locale: String, order: [ComponentHeroCarouselOrder], preview: Boolean, skip: Int = 0, where: ComponentHeroCarouselFilter): ComponentHeroCarouselCollection
+  componentIconCarousel(id: String!, locale: String, preview: Boolean): ComponentIconCarousel
+  componentIconCarouselCollection(limit: Int = 100, locale: String, order: [ComponentIconCarouselOrder], preview: Boolean, skip: Int = 0, where: ComponentIconCarouselFilter): ComponentIconCarouselCollection
   componentInfoBlock(id: String!, locale: String, preview: Boolean): ComponentInfoBlock
   componentInfoBlockCollection(limit: Int = 100, locale: String, order: [ComponentInfoBlockOrder], preview: Boolean, skip: Int = 0, where: ComponentInfoBlockFilter): ComponentInfoBlockCollection
   componentProductTable(id: String!, locale: String, preview: Boolean): ComponentProductTable
@@ -3429,6 +3536,33 @@ enum TopicProductOrder {
 
 interface _Node {
   _id: ID!
+}
+
+input cfCategoryTopicNestedFilter {
+  AND: [cfCategoryTopicNestedFilter]
+  OR: [cfCategoryTopicNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  featuredImage_exists: Boolean
+  featuresCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  sys: SysFilter
+  targetPage_exists: Boolean
 }
 
 input cfMenuGroupNestedFilter {

@@ -10,13 +10,15 @@ export type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'Compo
 
 export type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner' };
 
+export type PageTopSectionFields_ComponentIconCarousel_Fragment = { __typename: 'ComponentIconCarousel' };
+
 export type PageTopSectionFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock' };
 
 export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote' };
 
 export type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
-export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
+export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentIconCarousel_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
 
 export type PageContentFields_ComponentHeroCarousel_Fragment = { __typename: 'ComponentHeroCarousel' };
 
@@ -54,6 +56,9 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
     ) | (
       { __typename: 'ComponentHeroBanner', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentHeroBanner_Fragment
+    ) | (
+      { __typename: 'ComponentIconCarousel', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_ComponentIconCarousel_Fragment
     ) | (
       { __typename: 'ComponentInfoBlock', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentInfoBlock_Fragment

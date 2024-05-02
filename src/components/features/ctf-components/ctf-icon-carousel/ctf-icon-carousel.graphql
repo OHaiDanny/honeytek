@@ -1,0 +1,32 @@
+fragment IconCarouselFields on ComponentIconCarousel {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  iconCarouselCollection {
+    items {
+      __typename
+      sys {
+        id
+      }
+      __typename
+      sys {
+        id
+      }
+      internalName
+      name
+      featuredImage {
+        title
+        url
+        description
+      }
+    }
+  }
+}
+
+query CtfIconCarousel($id: String!, $locale: String, $preview: Boolean) {
+  componentIconCarousel(id: $id, locale: $locale, preview: $preview) {
+    ...IconCarouselFields
+  }
+}

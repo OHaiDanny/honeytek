@@ -37,6 +37,11 @@ export const componentMap = {
       module => module.CtfHeroCarousel,
     ),
   ),
+  ComponentIconCarousel: dynamic(() =>
+    import("@src/components/features/ctf-components/ctf-icon-carousel/ctf-icon-carousel").then(
+      module => module.CtfIconCarousel,
+    ),
+  ),
   ComponentInfoBlock: dynamic(() =>
     import("@src/components/features/ctf-components/ctf-info-block/ctf-info-block").then(
       module => module.CtfInfoBlock,
@@ -79,6 +84,11 @@ export const componentGqlMap = {
   ComponentHeroCarousel: dynamic(() =>
     import("@src/components/features/ctf-components/ctf-hero-carousel/ctf-hero-carousel-gql").then(
       module => module.CtfHeroCarouselGql,
+    ),
+  ),
+  ComponentIconCarousel: dynamic(() =>
+    import("@src/components/features/ctf-components/ctf-icon-carousel/ctf-icon-carousel-gql").then(
+      module => module.CtfIconCarouselGql,
     ),
   ),
   ComponentInfoBlock: dynamic(() =>

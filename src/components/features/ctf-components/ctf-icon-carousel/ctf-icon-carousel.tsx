@@ -5,10 +5,8 @@ import clsx from "clsx"
 import Image from "next/image"
 import Carousel from "react-multi-carousel"
 
-import {HeroCarouselFieldsFragment} from "./__generated/ctf-hero-carousel.generated"
+import {IconCarouselFieldsFragment} from "./__generated/ctf-icon-carousel.generated"
 
-import {PageLink} from "@src/components/features/page-link"
-import {getColorConfigFromPalette} from "@src/theme"
 import "react-multi-carousel/lib/styles.css"
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -16,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "relative",
     textAlign: "center",
     padding: theme.spacing(8, 0),
+    background: "#222",
   },
 
   carouselTitle: {
@@ -26,18 +25,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
     maxWidth: "126rem",
-    padding: theme.spacing(8, 0, 8),
-    gap: theme.spacing(7),
   },
 
   carouselItemContainer: {
     margin: theme.spacing(2),
-    padding: theme.spacing(4),
-    border: "2px solid #ff5d2f",
+    padding: theme.spacing(2),
+    color: "white",
   },
 
   carouselItemTitle: {
     marginTop: theme.spacing(0),
+    fontSize: "14px",
   },
 
   moreButton: {
@@ -51,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const responsive = {
   desktop: {
     breakpoint: {max: 3000, min: 1024},
-    items: 4,
+    items: 7,
   },
   tablet: {
     breakpoint: {max: 1024, min: 464},
@@ -63,15 +61,13 @@ const responsive = {
   },
 }
 
-export const CtfHeroCarousel = (props: HeroCarouselFieldsFragment) => {
+export const CtfIconCarousel = (props: IconCarouselFieldsFragment) => {
   const {
     sys: {id},
-    internalName,
-    carouselProductsCollection,
+    iconCarouselCollection,
   } = props
 
-  const colorConfig = getColorConfigFromPalette()
-  const carouselItems = carouselProductsCollection?.items
+  const icons = iconCarouselCollection?.items
   const classes = useStyles()
   const inspectorMode = useContentfulInspectorMode({entryId: id})
 
@@ -81,41 +77,28 @@ export const CtfHeroCarousel = (props: HeroCarouselFieldsFragment) => {
       className={clsx(classes.root)}
       {...inspectorMode({fieldId: "carousel"})}
     >
-      <h1 className={classes.carouselTitle}>{internalName}</h1>
-      {carouselItems && (
+      {icons && (
         <Carousel
           responsive={responsive}
-          showDots={true}
           draggable={true}
           swipeable={true}
           infinite={true}
+          autoPlay={true}
           partialVisbile={false}
           containerClass={classes.carouselWrapper}
         >
-          {carouselItems.map(
+          {icons.map(
             (item, i) =>
               item &&
               item?.featuredImage && (
                 <article key={`${item.internalName}${i}`} className={classes.carouselItemContainer}>
                   <Image
                     src={item?.featuredImage?.url || "none"}
-                    width={202}
-                    height={202}
+                    width={50}
+                    height={50}
                     alt={item?.featuredImage?.description || "broken image"}
                   />
                   <h3 className={classes.carouselItemTitle}>{item.name}</h3>
-                  {item.targetPage && item.targetPage.slug && (
-                    <PageLink
-                      className={classes.moreButton}
-                      page={item.targetPage}
-                      variant="contained"
-                      color={colorConfig.buttonColor}
-                      isButton
-                      isProductPage
-                    >
-                      More +
-                    </PageLink>
-                  )}
                 </article>
               ),
           )}

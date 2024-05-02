@@ -1,4 +1,4 @@
-fragment PageLinkFields on Page, ProductDetailPage {
+fragment PageLinkFields on Page {
   __typename
   slug
   sys {

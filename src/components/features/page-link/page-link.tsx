@@ -9,13 +9,15 @@ export type PageLinkProps = Omit<LinkProps, "children"> & {
   page: PageLinkFieldsFragment | CtfProductDetailPageFieldsFragment
   render?: (pathname?: string) => ReactNode
   children?: ReactNode
+  isProductPage?: boolean
 }
 
 export const PageLink = (props: PageLinkProps) => {
   const pathname = props.page.slug ? `/${props.page.slug}` : ``
+  const productPagePathname = props.isProductPage ? `/product/${pathname}` : pathname
 
   const linkProps = {
-    href: pathname,
+    href: productPagePathname || pathname,
     className: props.className,
     onClick: props.onClick,
     withoutMaterial: props.withoutMaterial,
