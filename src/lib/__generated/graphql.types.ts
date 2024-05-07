@@ -1303,8 +1303,8 @@ export enum ComponentHeroCarouselCarouselProductsCollectionOrder {
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
+  SubTitleAsc = 'subTitle_ASC',
+  SubTitleDesc = 'subTitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2090,8 +2090,8 @@ export enum ComponentProductTableProductsCollectionOrder {
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
+  SubTitleAsc = 'subTitle_ASC',
+  SubTitleDesc = 'subTitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -3809,8 +3809,8 @@ export enum ProductDetailPageLinkingCollectionsTopicProductCollectionOrder {
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
+  SubTitleAsc = 'subTitle_ASC',
+  SubTitleDesc = 'subTitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -4953,11 +4953,13 @@ export type TopicProduct = Entry & {
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<TopicProductDescription>;
   featuredImage?: Maybe<Asset>;
-  featuresCollection?: Maybe<TopicProductFeaturesCollection>;
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<TopicProductLinkingCollections>;
   name?: Maybe<Scalars['String']>;
-  price?: Maybe<Scalars['Float']>;
+  pdfFile?: Maybe<Asset>;
+  productGalleryCollection?: Maybe<AssetCollection>;
+  specifications?: Maybe<TopicProductSpecifications>;
+  subTitle?: Maybe<Scalars['String']>;
   sys: Sys;
   targetPage?: Maybe<ProductDetailPage>;
 };
@@ -4973,17 +4975,6 @@ export type TopicProductDescriptionArgs = {
 export type TopicProductFeaturedImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
-export type TopicProductFeaturesCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<TopicProductFeaturesCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<TopicProductFeatureFilter>;
 };
 
 
@@ -5006,7 +4997,29 @@ export type TopicProductNameArgs = {
 
 
 /** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
-export type TopicProductPriceArgs = {
+export type TopicProductPdfFileArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
+export type TopicProductProductGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
+export type TopicProductSpecificationsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
+export type TopicProductSubTitleArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -5155,7 +5168,6 @@ export type TopicProductFeatureLinkingCollections = {
   __typename?: 'TopicProductFeatureLinkingCollections';
   categoryTopicCollection?: Maybe<CategoryTopicCollection>;
   entryCollection?: Maybe<EntryCollection>;
-  topicProductCollection?: Maybe<TopicProductCollection>;
 };
 
 
@@ -5175,37 +5187,11 @@ export type TopicProductFeatureLinkingCollectionsEntryCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
-
-export type TopicProductFeatureLinkingCollectionsTopicProductCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
 export enum TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
-export enum TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -5327,29 +5313,6 @@ export type TopicProductFeatureShortDescriptionResourcesInline = ResourceLink & 
   sys: ResourceSys;
 };
 
-export type TopicProductFeaturesCollection = {
-  __typename?: 'TopicProductFeaturesCollection';
-  items: Array<Maybe<TopicProductFeature>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export enum TopicProductFeaturesCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export type TopicProductFilter = {
   AND?: InputMaybe<Array<InputMaybe<TopicProductFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<TopicProductFilter>>>;
@@ -5358,8 +5321,6 @@ export type TopicProductFilter = {
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
-  features?: InputMaybe<CfTopicProductFeatureNestedFilter>;
-  featuresCollection_exists?: InputMaybe<Scalars['Boolean']>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -5374,15 +5335,18 @@ export type TopicProductFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  price?: InputMaybe<Scalars['Float']>;
-  price_exists?: InputMaybe<Scalars['Boolean']>;
-  price_gt?: InputMaybe<Scalars['Float']>;
-  price_gte?: InputMaybe<Scalars['Float']>;
-  price_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  price_lt?: InputMaybe<Scalars['Float']>;
-  price_lte?: InputMaybe<Scalars['Float']>;
-  price_not?: InputMaybe<Scalars['Float']>;
-  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  pdfFile_exists?: InputMaybe<Scalars['Boolean']>;
+  productGalleryCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  specifications_contains?: InputMaybe<Scalars['String']>;
+  specifications_exists?: InputMaybe<Scalars['Boolean']>;
+  specifications_not_contains?: InputMaybe<Scalars['String']>;
+  subTitle?: InputMaybe<Scalars['String']>;
+  subTitle_contains?: InputMaybe<Scalars['String']>;
+  subTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  subTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  subTitle_not?: InputMaybe<Scalars['String']>;
+  subTitle_not_contains?: InputMaybe<Scalars['String']>;
+  subTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
   targetPage?: InputMaybe<CfProductDetailPageNestedFilter>;
   targetPage_exists?: InputMaybe<Scalars['Boolean']>;
@@ -5510,8 +5474,8 @@ export enum TopicProductOrder {
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
-  PriceAsc = 'price_ASC',
-  PriceDesc = 'price_DESC',
+  SubTitleAsc = 'subTitle_ASC',
+  SubTitleDesc = 'subTitle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -5521,6 +5485,54 @@ export enum TopicProductOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
+
+export type TopicProductSpecifications = {
+  __typename?: 'TopicProductSpecifications';
+  json: Scalars['JSON'];
+  links: TopicProductSpecificationsLinks;
+};
+
+export type TopicProductSpecificationsAssets = {
+  __typename?: 'TopicProductSpecificationsAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type TopicProductSpecificationsEntries = {
+  __typename?: 'TopicProductSpecificationsEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type TopicProductSpecificationsLinks = {
+  __typename?: 'TopicProductSpecificationsLinks';
+  assets: TopicProductSpecificationsAssets;
+  entries: TopicProductSpecificationsEntries;
+  resources: TopicProductSpecificationsResources;
+};
+
+export type TopicProductSpecificationsResources = {
+  __typename?: 'TopicProductSpecificationsResources';
+  block: Array<TopicProductSpecificationsResourcesBlock>;
+  hyperlink: Array<TopicProductSpecificationsResourcesHyperlink>;
+  inline: Array<TopicProductSpecificationsResourcesInline>;
+};
+
+export type TopicProductSpecificationsResourcesBlock = ResourceLink & {
+  __typename?: 'TopicProductSpecificationsResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type TopicProductSpecificationsResourcesHyperlink = ResourceLink & {
+  __typename?: 'TopicProductSpecificationsResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type TopicProductSpecificationsResourcesInline = ResourceLink & {
+  __typename?: 'TopicProductSpecificationsResourcesInline';
+  sys: ResourceSys;
+};
 
 export type _Node = {
   _id: Scalars['ID'];
@@ -5710,7 +5722,6 @@ export type CfTopicProductNestedFilter = {
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
-  featuresCollection_exists?: InputMaybe<Scalars['Boolean']>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -5725,15 +5736,18 @@ export type CfTopicProductNestedFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  price?: InputMaybe<Scalars['Float']>;
-  price_exists?: InputMaybe<Scalars['Boolean']>;
-  price_gt?: InputMaybe<Scalars['Float']>;
-  price_gte?: InputMaybe<Scalars['Float']>;
-  price_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  price_lt?: InputMaybe<Scalars['Float']>;
-  price_lte?: InputMaybe<Scalars['Float']>;
-  price_not?: InputMaybe<Scalars['Float']>;
-  price_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  pdfFile_exists?: InputMaybe<Scalars['Boolean']>;
+  productGalleryCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  specifications_contains?: InputMaybe<Scalars['String']>;
+  specifications_exists?: InputMaybe<Scalars['Boolean']>;
+  specifications_not_contains?: InputMaybe<Scalars['String']>;
+  subTitle?: InputMaybe<Scalars['String']>;
+  subTitle_contains?: InputMaybe<Scalars['String']>;
+  subTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  subTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  subTitle_not?: InputMaybe<Scalars['String']>;
+  subTitle_not_contains?: InputMaybe<Scalars['String']>;
+  subTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
   targetPage_exists?: InputMaybe<Scalars['Boolean']>;
 };
@@ -6013,7 +6027,7 @@ export type CtfProductFeatureQueryVariables = Exact<{
 
 export type CtfProductFeatureQuery = { __typename?: 'Query', topicProductFeature?: { __typename: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, shortDescription?: { __typename?: 'TopicProductFeatureShortDescription', json: any, links: { __typename?: 'TopicProductFeatureShortDescriptionLinks', assets: { __typename?: 'TopicProductFeatureShortDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null };
 
-export type ProductTableFieldsFragment = { __typename: 'ComponentProductTable', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<{ __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<{ __typename: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, shortDescription?: { __typename?: 'TopicProductFeatureShortDescription', json: any, links: { __typename?: 'TopicProductFeatureShortDescriptionLinks', assets: { __typename?: 'TopicProductFeatureShortDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null> } | null } | null> } | null };
+export type ProductTableFieldsFragment = { __typename: 'ComponentProductTable', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<{ __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null } | null> } | null };
 
 export type CtfProductTableQueryVariables = Exact<{
   id: Scalars['String'];
@@ -6022,9 +6036,9 @@ export type CtfProductTableQueryVariables = Exact<{
 }>;
 
 
-export type CtfProductTableQuery = { __typename?: 'Query', componentProductTable?: { __typename: 'ComponentProductTable', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<{ __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<{ __typename: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, shortDescription?: { __typename?: 'TopicProductFeatureShortDescription', json: any, links: { __typename?: 'TopicProductFeatureShortDescriptionLinks', assets: { __typename?: 'TopicProductFeatureShortDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null> } | null } | null> } | null } | null };
+export type CtfProductTableQuery = { __typename?: 'Query', componentProductTable?: { __typename: 'ComponentProductTable', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<{ __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null } | null> } | null } | null };
 
-export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<{ __typename: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, shortDescription?: { __typename?: 'TopicProductFeatureShortDescription', json: any, links: { __typename?: 'TopicProductFeatureShortDescriptionLinks', assets: { __typename?: 'TopicProductFeatureShortDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null> } | null };
+export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null };
 
 export type CtfProductQueryVariables = Exact<{
   id: Scalars['String'];
@@ -6033,7 +6047,7 @@ export type CtfProductQueryVariables = Exact<{
 }>;
 
 
-export type CtfProductQuery = { __typename?: 'Query', topicProduct?: { __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<{ __typename: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, shortDescription?: { __typename?: 'TopicProductFeatureShortDescription', json: any, links: { __typename?: 'TopicProductFeatureShortDescriptionLinks', assets: { __typename?: 'TopicProductFeatureShortDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null> } | null } | null };
+export type CtfProductQuery = { __typename?: 'Query', topicProduct?: { __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null } | null };
 
 export type QuoteFieldsFragment = { __typename: 'ComponentQuote', quoteAlignment?: boolean | null, imagePosition?: boolean | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentIconCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'NavigationMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ProductDetailPage', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 

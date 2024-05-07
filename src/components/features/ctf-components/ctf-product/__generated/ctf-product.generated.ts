@@ -1,18 +1,13 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { ProductFeatureFieldsFragment } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { ProductFeatureFieldsFragmentDoc } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
-export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
+export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
-  ) | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<(
-      { __typename?: 'TopicProductFeature' }
-      & ProductFeatureFieldsFragment
-    ) | null> } | null };
+  ) | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null };
 
 export type CtfProductQueryVariables = Types.Exact<{
   id: Types.Scalars['String'];
@@ -33,16 +28,22 @@ export const ProductFieldsFragmentDoc = `
     id
   }
   name
-  featuredImage {
-    ...AssetFields
-  }
+  subTitle
   description {
     json
   }
-  price
-  featuresCollection(limit: 30) {
+  specifications {
+    json
+  }
+  featuredImage {
+    ...AssetFields
+  }
+  pdfFile {
+    url
+  }
+  productGalleryCollection {
     items {
-      ...ProductFeatureFields
+      url
     }
   }
 }
@@ -54,8 +55,7 @@ export const CtfProductDocument = `
   }
 }
     ${ProductFieldsFragmentDoc}
-${AssetFieldsFragmentDoc}
-${ProductFeatureFieldsFragmentDoc}`;
+${AssetFieldsFragmentDoc}`;
 export const useCtfProductQuery = <
       TData = CtfProductQuery,
       TError = unknown

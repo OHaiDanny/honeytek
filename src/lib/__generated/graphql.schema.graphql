@@ -786,8 +786,8 @@ enum ComponentHeroCarouselCarouselProductsCollectionOrder {
   internalName_DESC
   name_ASC
   name_DESC
-  price_ASC
-  price_DESC
+  subTitle_ASC
+  subTitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1326,8 +1326,8 @@ enum ComponentProductTableProductsCollectionOrder {
   internalName_DESC
   name_ASC
   name_DESC
-  price_ASC
-  price_DESC
+  subTitle_ASC
+  subTitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -2585,8 +2585,8 @@ enum ProductDetailPageLinkingCollectionsTopicProductCollectionOrder {
   internalName_DESC
   name_ASC
   name_DESC
-  price_ASC
-  price_DESC
+  subTitle_ASC
+  subTitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -3149,11 +3149,13 @@ type TopicProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): TopicProductDescription
   featuredImage(locale: String, preview: Boolean): Asset
-  featuresCollection(limit: Int = 100, locale: String, order: [TopicProductFeaturesCollectionOrder], preview: Boolean, skip: Int = 0, where: TopicProductFeatureFilter): TopicProductFeaturesCollection
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): TopicProductLinkingCollections
   name(locale: String): String
-  price(locale: String): Float
+  pdfFile(locale: String, preview: Boolean): Asset
+  productGalleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  specifications(locale: String): TopicProductSpecifications
+  subTitle(locale: String): String
   sys: Sys!
   targetPage(locale: String, preview: Boolean, where: ProductDetailPageFilter): ProductDetailPage
 }
@@ -3255,7 +3257,6 @@ input TopicProductFeatureFilter {
 type TopicProductFeatureLinkingCollections {
   categoryTopicCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder], preview: Boolean, skip: Int = 0): CategoryTopicCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  topicProductCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder], preview: Boolean, skip: Int = 0): TopicProductCollection
 }
 
 enum TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder {
@@ -3263,23 +3264,6 @@ enum TopicProductFeatureLinkingCollectionsCategoryTopicCollectionOrder {
   internalName_DESC
   name_ASC
   name_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
-enum TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder {
-  internalName_ASC
-  internalName_DESC
-  name_ASC
-  name_DESC
-  price_ASC
-  price_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -3385,28 +3369,6 @@ type TopicProductFeatureShortDescriptionResourcesInline implements ResourceLink 
   sys: ResourceSys!
 }
 
-type TopicProductFeaturesCollection {
-  items: [TopicProductFeature]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-enum TopicProductFeaturesCollectionOrder {
-  internalName_ASC
-  internalName_DESC
-  name_ASC
-  name_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
 input TopicProductFilter {
   AND: [TopicProductFilter]
   OR: [TopicProductFilter]
@@ -3415,8 +3377,6 @@ input TopicProductFilter {
   description_exists: Boolean
   description_not_contains: String
   featuredImage_exists: Boolean
-  features: cfTopicProductFeatureNestedFilter
-  featuresCollection_exists: Boolean
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -3431,15 +3391,18 @@ input TopicProductFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  price: Float
-  price_exists: Boolean
-  price_gt: Float
-  price_gte: Float
-  price_in: [Float]
-  price_lt: Float
-  price_lte: Float
-  price_not: Float
-  price_not_in: [Float]
+  pdfFile_exists: Boolean
+  productGalleryCollection_exists: Boolean
+  specifications_contains: String
+  specifications_exists: Boolean
+  specifications_not_contains: String
+  subTitle: String
+  subTitle_contains: String
+  subTitle_exists: Boolean
+  subTitle_in: [String]
+  subTitle_not: String
+  subTitle_not_contains: String
+  subTitle_not_in: [String]
   sys: SysFilter
   targetPage: cfProductDetailPageNestedFilter
   targetPage_exists: Boolean
@@ -3522,8 +3485,8 @@ enum TopicProductOrder {
   internalName_DESC
   name_ASC
   name_DESC
-  price_ASC
-  price_DESC
+  subTitle_ASC
+  subTitle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -3532,6 +3495,46 @@ enum TopicProductOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+type TopicProductSpecifications {
+  json: JSON!
+  links: TopicProductSpecificationsLinks!
+}
+
+type TopicProductSpecificationsAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type TopicProductSpecificationsEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type TopicProductSpecificationsLinks {
+  assets: TopicProductSpecificationsAssets!
+  entries: TopicProductSpecificationsEntries!
+  resources: TopicProductSpecificationsResources!
+}
+
+type TopicProductSpecificationsResources {
+  block: [TopicProductSpecificationsResourcesBlock!]!
+  hyperlink: [TopicProductSpecificationsResourcesHyperlink!]!
+  inline: [TopicProductSpecificationsResourcesInline!]!
+}
+
+type TopicProductSpecificationsResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductSpecificationsResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductSpecificationsResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 interface _Node {
@@ -3722,7 +3725,6 @@ input cfTopicProductNestedFilter {
   description_exists: Boolean
   description_not_contains: String
   featuredImage_exists: Boolean
-  featuresCollection_exists: Boolean
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -3737,15 +3739,18 @@ input cfTopicProductNestedFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  price: Float
-  price_exists: Boolean
-  price_gt: Float
-  price_gte: Float
-  price_in: [Float]
-  price_lt: Float
-  price_lte: Float
-  price_not: Float
-  price_not_in: [Float]
+  pdfFile_exists: Boolean
+  productGalleryCollection_exists: Boolean
+  specifications_contains: String
+  specifications_exists: Boolean
+  specifications_not_contains: String
+  subTitle: String
+  subTitle_contains: String
+  subTitle_exists: Boolean
+  subTitle_in: [String]
+  subTitle_not: String
+  subTitle_not_contains: String
+  subTitle_not_in: [String]
   sys: SysFilter
   targetPage_exists: Boolean
 }

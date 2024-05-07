@@ -4,16 +4,22 @@ fragment ProductFields on TopicProduct {
     id
   }
   name
-  featuredImage {
-    ...AssetFields
-  }
+  subTitle
   description {
     json
   }
-  price
-  featuresCollection(limit: 30) {
+  specifications {
+    json
+  }
+  featuredImage {
+    ...AssetFields
+  }
+  pdfFile {
+    url
+  }
+  productGalleryCollection {
     items {
-      ...ProductFeatureFields
+      url
     }
   }
 }
