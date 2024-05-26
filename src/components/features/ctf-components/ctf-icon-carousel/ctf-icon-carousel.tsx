@@ -90,13 +90,13 @@ export const CtfIconCarousel = (props: IconCarouselFieldsFragment) => {
           {icons.map(
             (item, i) =>
               item &&
-              item?.featuredImage && (
+              item?.iconImage && (
                 <article key={`${item.internalName}${i}`} className={classes.carouselItemContainer}>
                   <Image
-                    src={item?.featuredImage?.url || "none"}
+                    src={item?.iconImage?.url || "none"}
                     width={50}
                     height={50}
-                    alt={item?.featuredImage?.description || "broken image"}
+                    alt={item?.iconImage?.description || "broken image"}
                   />
                   <h3 className={classes.carouselItemTitle}>{item.name}</h3>
                 </article>

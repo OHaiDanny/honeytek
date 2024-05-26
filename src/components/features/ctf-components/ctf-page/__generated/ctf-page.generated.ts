@@ -14,11 +14,11 @@ export type PageTopSectionFields_ComponentIconCarousel_Fragment = { __typename: 
 
 export type PageTopSectionFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock' };
 
-export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote' };
-
 export type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
-export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentIconCarousel_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
+export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentIconCarousel_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
+
+export type PageContentFields_CategoryTopic_Fragment = { __typename: 'CategoryTopic' };
 
 export type PageContentFields_ComponentHeroCarousel_Fragment = { __typename: 'ComponentHeroCarousel' };
 
@@ -28,7 +28,7 @@ export type PageContentFields_TopicBusinessInfo_Fragment = { __typename: 'TopicB
 
 export type PageContentFields_TopicProduct_Fragment = { __typename: 'TopicProduct' };
 
-export type PageContentFieldsFragment = PageContentFields_ComponentHeroCarousel_Fragment | PageContentFields_ComponentProductTable_Fragment | PageContentFields_TopicBusinessInfo_Fragment | PageContentFields_TopicProduct_Fragment;
+export type PageContentFieldsFragment = PageContentFields_CategoryTopic_Fragment | PageContentFields_ComponentHeroCarousel_Fragment | PageContentFields_ComponentProductTable_Fragment | PageContentFields_TopicBusinessInfo_Fragment | PageContentFields_TopicProduct_Fragment;
 
 export type PageExtraSectionItemFields_ComponentCta_Fragment = { __typename: 'ComponentCta' };
 
@@ -38,11 +38,9 @@ export type PageExtraSectionItemFields_ComponentHeroBanner_Fragment = { __typena
 
 export type PageExtraSectionItemFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock' };
 
-export type PageExtraSectionItemFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote' };
-
 export type PageExtraSectionItemFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
-export type PageExtraSectionItemFieldsFragment = PageExtraSectionItemFields_ComponentCta_Fragment | PageExtraSectionItemFields_ComponentDuplex_Fragment | PageExtraSectionItemFields_ComponentHeroBanner_Fragment | PageExtraSectionItemFields_ComponentInfoBlock_Fragment | PageExtraSectionItemFields_ComponentQuote_Fragment | PageExtraSectionItemFields_ComponentTextBlock_Fragment;
+export type PageExtraSectionItemFieldsFragment = PageExtraSectionItemFields_ComponentCta_Fragment | PageExtraSectionItemFields_ComponentDuplex_Fragment | PageExtraSectionItemFields_ComponentHeroBanner_Fragment | PageExtraSectionItemFields_ComponentInfoBlock_Fragment | PageExtraSectionItemFields_ComponentTextBlock_Fragment;
 
 export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string }, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
       { __typename?: 'Asset' }
@@ -63,12 +61,12 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
       { __typename: 'ComponentInfoBlock', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentInfoBlock_Fragment
     ) | (
-      { __typename: 'ComponentQuote', sys: { __typename?: 'Sys', id: string } }
-      & PageTopSectionFields_ComponentQuote_Fragment
-    ) | (
       { __typename: 'ComponentTextBlock', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentTextBlock_Fragment
     ) | null> } | null, pageContent?: (
+    { __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } }
+    & PageContentFields_CategoryTopic_Fragment
+  ) | (
     { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } }
     & PageContentFields_ComponentHeroCarousel_Fragment
   ) | (
@@ -92,9 +90,6 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
     ) | (
       { __typename: 'ComponentInfoBlock', sys: { __typename?: 'Sys', id: string } }
       & PageExtraSectionItemFields_ComponentInfoBlock_Fragment
-    ) | (
-      { __typename: 'ComponentQuote', sys: { __typename?: 'Sys', id: string } }
-      & PageExtraSectionItemFields_ComponentQuote_Fragment
     ) | (
       { __typename: 'ComponentTextBlock', sys: { __typename?: 'Sys', id: string } }
       & PageExtraSectionItemFields_ComponentTextBlock_Fragment

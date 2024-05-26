@@ -1,6 +1,11 @@
 import dynamic from "next/dynamic"
 
 const pageTopicMap = {
+  CategoryTopic: dynamic(() =>
+    import("@src/components/features/ctf-components/ctf-category/ctf-category-gql").then(
+      module => module.CtfCategoryGql,
+    ),
+  ),
   TopicProduct: dynamic(() =>
     import("@src/components/features/ctf-components/ctf-product/ctf-product-gql").then(
       module => module.CtfProductGql,
@@ -47,11 +52,6 @@ export const componentMap = {
       module => module.CtfInfoBlock,
     ),
   ),
-  ComponentQuote: dynamic(() =>
-    import("@src/components/features/ctf-components/ctf-quote/ctf-quote").then(
-      module => module.CtfQuote,
-    ),
-  ),
   ComponentTextBlock: dynamic(() =>
     import("@src/components/features/ctf-components/ctf-text-block/ctf-text-block").then(
       module => module.CtfTextBlock,
@@ -94,11 +94,6 @@ export const componentGqlMap = {
   ComponentInfoBlock: dynamic(() =>
     import("@src/components/features/ctf-components/ctf-info-block/ctf-info-block-gql").then(
       module => module.CtfInfoBlockGql,
-    ),
-  ),
-  ComponentQuote: dynamic(() =>
-    import("@src/components/features/ctf-components/ctf-quote/ctf-quote-gql").then(
-      module => module.CtfQuoteGql,
     ),
   ),
   ComponentTextBlock: dynamic(() =>

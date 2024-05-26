@@ -1,0 +1,28 @@
+fragment CategoryFields on CategoryTopic {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  name
+  description {
+    json
+  }
+  featuredImage {
+    ...AssetFields
+  }
+  productsCollection {
+    items {
+      ...ProductFields
+    }
+  }
+  targetPage {
+    ...PageLinkFields
+  }
+}
+
+query CtfCategory($id: String!, $locale: String, $preview: Boolean) {
+  categoryTopic(id: $id, preview: $preview, locale: $locale) {
+    ...CategoryFields
+  }
+}

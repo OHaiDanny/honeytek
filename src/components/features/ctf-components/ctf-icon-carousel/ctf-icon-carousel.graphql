@@ -16,7 +16,7 @@ fragment IconCarouselFields on ComponentIconCarousel {
       }
       internalName
       name
-      featuredImage {
+      iconImage {
         title
         url
         description

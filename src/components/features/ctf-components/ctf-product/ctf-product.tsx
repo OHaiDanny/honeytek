@@ -7,6 +7,7 @@ import "react-image-gallery/styles/css/image-gallery.css"
 import {ProductFieldsFragment} from "./__generated/ctf-product.generated"
 
 import {CtfRichtext} from "@src/components/features/ctf-components/ctf-richtext/ctf-richtext"
+import {Breadcrumb} from "@src/components/shared/breadcrumb"
 import LayoutContext, {defaultLayout} from "@src/layout-context"
 import {PRIMARY_COLOR} from "@src/theme"
 
@@ -158,13 +159,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .image-gallery-thumbnail-image": {
       width: "60%",
     },
+    "&.active, &:hover": {
+      border: "2px solid #ff5d2f !important",
+    },
+    "&:hover": {
+      opacity: "0.8",
+    },
   },
 }))
 
 export const CtfProduct = (props: ProductFieldsFragment) => {
   const {
+    category,
     description,
-    // featuredImage,
     name,
     pdfFile,
     productGalleryCollection,
@@ -184,11 +191,12 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
     }
   })
 
-  console.log(galleryUrls)
-
   return (
     <>
       <Container maxWidth={false}>
+        <section className={classes.innerContainer}>
+          <Breadcrumb type="product" categoryName={category} productName={name} />
+        </section>
         <section className={classes.innerIntroContainer}>
           {galleryUrls && (
             <div className={classes.imageContainer}>

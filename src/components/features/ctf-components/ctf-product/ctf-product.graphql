@@ -5,6 +5,7 @@ fragment ProductFields on TopicProduct {
   }
   name
   subTitle
+  category
   description {
     json
   }

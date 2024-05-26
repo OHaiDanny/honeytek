@@ -4,7 +4,7 @@ import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.gener
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
-export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: (
+export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, category?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null };
@@ -29,6 +29,7 @@ export const ProductFieldsFragmentDoc = `
   }
   name
   subTitle
+  category
   description {
     json
   }
