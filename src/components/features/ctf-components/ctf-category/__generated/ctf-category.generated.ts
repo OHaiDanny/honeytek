@@ -1,20 +1,18 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { ProductFieldsFragment } from '../../ctf-product/__generated/ctf-product.generated';
 import { PageLinkFieldsFragment } from '../../../page-link/__generated/page-link.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { ProductFieldsFragmentDoc } from '../../ctf-product/__generated/ctf-product.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
 export type CategoryFieldsFragment = { __typename: 'CategoryTopic', internalName?: string | null, name?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryTopicDescription', json: any } | null, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
-  ) | null, productsCollection?: { __typename?: 'CategoryTopicProductsCollection', items: Array<(
-      { __typename?: 'TopicProduct' }
-      & ProductFieldsFragment
-    ) | null> } | null, targetPage?: { __typename?: 'CategoryTopic' } | { __typename?: 'ComponentCta' } | { __typename?: 'ComponentDuplex' } | { __typename?: 'ComponentHeroBanner' } | { __typename?: 'ComponentHeroCarousel' } | { __typename?: 'ComponentIconCarousel' } | { __typename?: 'ComponentInfoBlock' } | { __typename?: 'ComponentProductTable' } | { __typename?: 'ComponentTextBlock' } | { __typename?: 'FooterMenu' } | { __typename?: 'MenuGroup' } | { __typename?: 'NavigationMenu' } | (
+  ) | null, productsCollection?: { __typename?: 'CategoryTopicProductsCollection', items: Array<{ __typename?: 'TopicProduct', name?: string | null, filterDcVoltage?: string | null, filterAcVoltage?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
+        { __typename?: 'Asset' }
+        & AssetFieldsFragment
+      ) | null } | null> } | null, targetPage?: { __typename?: 'CategoryTopic' } | { __typename?: 'ComponentCta' } | { __typename?: 'ComponentDuplex' } | { __typename?: 'ComponentHeroBanner' } | { __typename?: 'ComponentHeroCarousel' } | { __typename?: 'ComponentIconCarousel' } | { __typename?: 'ComponentInfoBlock' } | { __typename?: 'ComponentProductTable' } | { __typename?: 'ComponentTextBlock' } | { __typename?: 'FooterMenu' } | { __typename?: 'MenuGroup' } | { __typename?: 'NavigationMenu' } | (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
   ) | { __typename?: 'ProductDetailPage' } | { __typename?: 'Seo' } | { __typename?: 'TopicBusinessInfo' } | { __typename?: 'TopicPerson' } | { __typename?: 'TopicProduct' } | { __typename?: 'TopicProductFeature' } | null };
@@ -47,7 +45,15 @@ export const CategoryFieldsFragmentDoc = `
   }
   productsCollection {
     items {
-      ...ProductFields
+      sys {
+        id
+      }
+      name
+      featuredImage {
+        ...AssetFields
+      }
+      filterDcVoltage
+      filterAcVoltage
     }
   }
   targetPage {
@@ -63,7 +69,6 @@ export const CtfCategoryDocument = `
 }
     ${CategoryFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
-${ProductFieldsFragmentDoc}
 ${PageLinkFieldsFragmentDoc}`;
 export const useCtfCategoryQuery = <
       TData = CtfCategoryQuery,

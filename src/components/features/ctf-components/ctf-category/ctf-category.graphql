@@ -13,7 +13,15 @@ fragment CategoryFields on CategoryTopic {
   }
   productsCollection {
     items {
-      ...ProductFields
+      sys {
+        id
+      }
+      name
+      featuredImage {
+        ...AssetFields
+      }
+      filterDcVoltage
+      filterAcVoltage
     }
   }
   targetPage {

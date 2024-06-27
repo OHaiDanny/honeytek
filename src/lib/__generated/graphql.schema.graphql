@@ -127,7 +127,8 @@ enum AssetOrder {
 """
 Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic)
 """
-type CategoryTopic implements Entry {
+type CategoryTopic implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): CategoryTopicDescription
   featuredImage(locale: String, preview: Boolean): Asset
@@ -277,6 +278,10 @@ type CategoryTopicProductsCollection {
 enum CategoryTopicProductsCollectionOrder {
   category_ASC
   category_DESC
+  filterAcVoltage_ASC
+  filterAcVoltage_DESC
+  filterDcVoltage_ASC
+  filterDcVoltage_DESC
   internalName_ASC
   internalName_DESC
   name_ASC
@@ -296,7 +301,8 @@ enum CategoryTopicProductsCollectionOrder {
 """
 Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentCta)
 """
-type ComponentCta implements Entry {
+type ComponentCta implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   ctaText(locale: String): String
   headline(locale: String): String
@@ -458,7 +464,8 @@ union ComponentCtaTargetPage = Page
 """
 Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentDuplex)
 """
-type ComponentDuplex implements Entry {
+type ComponentDuplex implements Entry & _Node {
+  _id: ID!
   bodyText(locale: String): ComponentDuplexBodyText
   containerLayout(locale: String): Boolean
   contentfulMetadata: ContentfulMetadata!
@@ -623,7 +630,8 @@ enum ComponentDuplexOrder {
 """
 Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroBanner)
 """
-type ComponentHeroBanner implements Entry {
+type ComponentHeroBanner implements Entry & _Node {
+  _id: ID!
   bodyText(locale: String): ComponentHeroBannerBodyText
   contentfulMetadata: ContentfulMetadata!
   ctaText(locale: String): String
@@ -789,7 +797,8 @@ union ComponentHeroBannerTargetPage = Page
 """
 The carousel displaying various products that is located on the landing page [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroCarousel)
 """
-type ComponentHeroCarousel implements Entry {
+type ComponentHeroCarousel implements Entry & _Node {
+  _id: ID!
   carouselProductsCollection(limit: Int = 100, locale: String, order: [ComponentHeroCarouselCarouselProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: TopicProductFilter): ComponentHeroCarouselCarouselProductsCollection
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
@@ -807,6 +816,10 @@ type ComponentHeroCarouselCarouselProductsCollection {
 enum ComponentHeroCarouselCarouselProductsCollectionOrder {
   category_ASC
   category_DESC
+  filterAcVoltage_ASC
+  filterAcVoltage_DESC
+  filterDcVoltage_ASC
+  filterDcVoltage_DESC
   internalName_ASC
   internalName_DESC
   name_ASC
@@ -902,7 +915,8 @@ enum ComponentHeroCarouselOrder {
 """
 The carousel displaying various icons that is located on the landing page [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentIconCarousel)
 """
-type ComponentIconCarousel implements Entry {
+type ComponentIconCarousel implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   iconCarouselCollection(limit: Int = 100, locale: String, order: [ComponentIconCarouselIconCarouselCollectionOrder], preview: Boolean, skip: Int = 0, where: CategoryTopicFilter): ComponentIconCarouselIconCarouselCollection
   internalName(locale: String): String
@@ -993,7 +1007,8 @@ enum ComponentIconCarouselOrder {
 """
 Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentInfoBlock)
 """
-type ComponentInfoBlock implements Entry {
+type ComponentInfoBlock implements Entry & _Node {
+  _id: ID!
   block1Body(locale: String): ComponentInfoBlockBlock1Body
   block1Image(locale: String, preview: Boolean): Asset
   block2Body(locale: String): ComponentInfoBlockBlock2Body
@@ -1235,7 +1250,8 @@ enum ComponentInfoBlockOrder {
 """
 Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentProductTable)
 """
-type ComponentProductTable implements Entry {
+type ComponentProductTable implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   headline(locale: String): String
   internalName(locale: String): String
@@ -1349,6 +1365,10 @@ type ComponentProductTableProductsCollection {
 enum ComponentProductTableProductsCollectionOrder {
   category_ASC
   category_DESC
+  filterAcVoltage_ASC
+  filterAcVoltage_DESC
+  filterDcVoltage_ASC
+  filterDcVoltage_DESC
   internalName_ASC
   internalName_DESC
   name_ASC
@@ -1368,7 +1388,8 @@ enum ComponentProductTableProductsCollectionOrder {
 """
 Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentTextBlock)
 """
-type ComponentTextBlock implements Entry {
+type ComponentTextBlock implements Entry & _Node {
+  _id: ID!
   body(locale: String): ComponentTextBlockBody
   contentfulMetadata: ContentfulMetadata!
   headline(locale: String): String
@@ -1583,7 +1604,8 @@ enum EntryOrder {
 """
 Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/footerMenu)
 """
-type FooterMenu implements Entry {
+type FooterMenu implements Entry & _Node {
+  _id: ID!
   companyAddress(locale: String): FooterMenuCompanyAddress
   contentfulMetadata: ContentfulMetadata!
   copyright(locale: String): FooterMenuCopyright
@@ -1923,7 +1945,8 @@ scalar JSON
 """
 A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/menuGroup)
 """
-type MenuGroup implements Entry {
+type MenuGroup implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   featuredPagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: MenuGroupFeaturedPagesFilter): MenuGroupFeaturedPagesCollection
   groupLink(locale: String, preview: Boolean, where: MenuGroupGroupLinkFilter): MenuGroupGroupLink
@@ -2102,7 +2125,8 @@ enum MenuGroupOrder {
 """
 Navigation menu in the header [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/navigationMenu)
 """
-type NavigationMenu implements Entry {
+type NavigationMenu implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): NavigationMenuLinkingCollections
@@ -2175,7 +2199,8 @@ enum NavigationMenuOrder {
 """
 Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/page)
 """
-type Page implements Entry {
+type Page implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   extraSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: PageExtraSectionFilter): PageExtraSectionCollection
   internalName(locale: String): String
@@ -2389,7 +2414,8 @@ union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner 
 """
 Container that holds all the content for the product detail. Enables editors to publish a product, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/productDetailPage)
 """
-type ProductDetailPage implements Entry {
+type ProductDetailPage implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   extraSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: ProductDetailPageExtraSectionFilter): ProductDetailPageExtraSectionCollection
   internalName(locale: String): String
@@ -2482,6 +2508,10 @@ type ProductDetailPageLinkingCollections {
 enum ProductDetailPageLinkingCollectionsTopicProductCollectionOrder {
   category_ASC
   category_DESC
+  filterAcVoltage_ASC
+  filterAcVoltage_DESC
+  filterDcVoltage_ASC
+  filterDcVoltage_DESC
   internalName_ASC
   internalName_DESC
   name_ASC
@@ -2609,7 +2639,8 @@ type ResourceSys {
 """
 Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/seo)
 """
-type Seo implements Entry {
+type Seo implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): String
   image(locale: String, preview: Boolean): Asset
@@ -2728,6 +2759,9 @@ type Sys {
   environmentId: String!
   firstPublishedAt: DateTime
   id: String!
+
+  """The locale that was requested."""
+  locale: String
   publishedAt: DateTime
   publishedVersion: Int
   spaceId: String!
@@ -2773,7 +2807,8 @@ input SysFilter {
 """
 Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicBusinessInfo)
 """
-type TopicBusinessInfo implements Entry {
+type TopicBusinessInfo implements Entry & _Node {
+  _id: ID!
   body(locale: String): TopicBusinessInfoBody
   contentfulMetadata: ContentfulMetadata!
   featuredImage(locale: String, preview: Boolean): Asset
@@ -2921,7 +2956,8 @@ enum TopicBusinessInfoOrder {
 """
 Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicPerson)
 """
-type TopicPerson implements Entry {
+type TopicPerson implements Entry & _Node {
+  _id: ID!
   avatar(locale: String, preview: Boolean): Asset
   bio(locale: String): TopicPersonBio
   cardStyle(locale: String): Boolean
@@ -3051,12 +3087,14 @@ enum TopicPersonOrder {
 """
 Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct)
 """
-type TopicProduct implements Entry {
+type TopicProduct implements Entry & _Node {
+  _id: ID!
   category(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): TopicProductDescription
   featuredImage(locale: String, preview: Boolean): Asset
-  filters(locale: String): [String]
+  filterAcVoltage(locale: String): String
+  filterDcVoltage(locale: String): String
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): TopicProductLinkingCollections
   name(locale: String): String
@@ -3118,7 +3156,8 @@ type TopicProductDescriptionResourcesInline implements ResourceLink {
 """
 Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProductFeature)
 """
-type TopicProductFeature implements Entry {
+type TopicProductFeature implements Entry & _Node {
+  _id: ID!
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): TopicProductFeatureLinkingCollections
@@ -3276,10 +3315,20 @@ input TopicProductFilter {
   description_exists: Boolean
   description_not_contains: String
   featuredImage_exists: Boolean
-  filters_contains_all: [String]
-  filters_contains_none: [String]
-  filters_contains_some: [String]
-  filters_exists: Boolean
+  filterAcVoltage: String
+  filterAcVoltage_contains: String
+  filterAcVoltage_exists: Boolean
+  filterAcVoltage_in: [String]
+  filterAcVoltage_not: String
+  filterAcVoltage_not_contains: String
+  filterAcVoltage_not_in: [String]
+  filterDcVoltage: String
+  filterDcVoltage_contains: String
+  filterDcVoltage_exists: Boolean
+  filterDcVoltage_in: [String]
+  filterDcVoltage_not: String
+  filterDcVoltage_not_contains: String
+  filterDcVoltage_not_in: [String]
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -3402,6 +3451,10 @@ enum TopicProductLinkingCollectionsProductDetailPageCollectionOrder {
 enum TopicProductOrder {
   category_ASC
   category_DESC
+  filterAcVoltage_ASC
+  filterAcVoltage_DESC
+  filterDcVoltage_ASC
+  filterDcVoltage_DESC
   internalName_ASC
   internalName_DESC
   name_ASC
@@ -3627,10 +3680,20 @@ input cfTopicProductNestedFilter {
   description_exists: Boolean
   description_not_contains: String
   featuredImage_exists: Boolean
-  filters_contains_all: [String]
-  filters_contains_none: [String]
-  filters_contains_some: [String]
-  filters_exists: Boolean
+  filterAcVoltage: String
+  filterAcVoltage_contains: String
+  filterAcVoltage_exists: Boolean
+  filterAcVoltage_in: [String]
+  filterAcVoltage_not: String
+  filterAcVoltage_not_contains: String
+  filterAcVoltage_not_in: [String]
+  filterDcVoltage: String
+  filterDcVoltage_contains: String
+  filterDcVoltage_exists: Boolean
+  filterDcVoltage_in: [String]
+  filterDcVoltage_not: String
+  filterDcVoltage_not_contains: String
+  filterDcVoltage_not_in: [String]
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -3750,13 +3813,6 @@ input cftopSectionMultiTypeNestedFilter {
   AND: [cftopSectionMultiTypeNestedFilter]
   OR: [cftopSectionMultiTypeNestedFilter]
   contentfulMetadata: ContentfulMetadataFilter
-  headline: String
-  headline_contains: String
-  headline_exists: Boolean
-  headline_in: [String]
-  headline_not: String
-  headline_not_contains: String
-  headline_not_in: [String]
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean

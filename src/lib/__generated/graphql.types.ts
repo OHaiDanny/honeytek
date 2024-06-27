@@ -274,8 +274,9 @@ export enum AssetOrder {
 }
 
 /** Container for category-specific information. [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/categoryTopic) */
-export type CategoryTopic = Entry & {
+export type CategoryTopic = Entry & _Node & {
   __typename?: 'CategoryTopic';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<CategoryTopicDescription>;
   featuredImage?: Maybe<Asset>;
@@ -518,6 +519,10 @@ export type CategoryTopicProductsCollection = {
 export enum CategoryTopicProductsCollectionOrder {
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
+  FilterAcVoltageAsc = 'filterAcVoltage_ASC',
+  FilterAcVoltageDesc = 'filterAcVoltage_DESC',
+  FilterDcVoltageAsc = 'filterDcVoltage_ASC',
+  FilterDcVoltageDesc = 'filterDcVoltage_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
@@ -535,8 +540,9 @@ export enum CategoryTopicProductsCollectionOrder {
 }
 
 /** Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentCta) */
-export type ComponentCta = Entry & {
+export type ComponentCta = Entry & _Node & {
   __typename?: 'ComponentCta';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   ctaText?: Maybe<Scalars['String']>;
   headline?: Maybe<Scalars['String']>;
@@ -775,8 +781,9 @@ export type ComponentCtaSublineResourcesInline = ResourceLink & {
 export type ComponentCtaTargetPage = Page;
 
 /** Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentDuplex) */
-export type ComponentDuplex = Entry & {
+export type ComponentDuplex = Entry & _Node & {
   __typename?: 'ComponentDuplex';
+  _id: Scalars['ID'];
   bodyText?: Maybe<ComponentDuplexBodyText>;
   containerLayout?: Maybe<Scalars['Boolean']>;
   contentfulMetadata: ContentfulMetadata;
@@ -1032,8 +1039,9 @@ export enum ComponentDuplexOrder {
 }
 
 /** Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroBanner) */
-export type ComponentHeroBanner = Entry & {
+export type ComponentHeroBanner = Entry & _Node & {
   __typename?: 'ComponentHeroBanner';
+  _id: Scalars['ID'];
   bodyText?: Maybe<ComponentHeroBannerBodyText>;
   contentfulMetadata: ContentfulMetadata;
   ctaText?: Maybe<Scalars['String']>;
@@ -1289,8 +1297,9 @@ export enum ComponentHeroBannerOrder {
 export type ComponentHeroBannerTargetPage = Page;
 
 /** The carousel displaying various products that is located on the landing page [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroCarousel) */
-export type ComponentHeroCarousel = Entry & {
+export type ComponentHeroCarousel = Entry & _Node & {
   __typename?: 'ComponentHeroCarousel';
+  _id: Scalars['ID'];
   carouselProductsCollection?: Maybe<ComponentHeroCarouselCarouselProductsCollection>;
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']>;
@@ -1332,6 +1341,10 @@ export type ComponentHeroCarouselCarouselProductsCollection = {
 export enum ComponentHeroCarouselCarouselProductsCollectionOrder {
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
+  FilterAcVoltageAsc = 'filterAcVoltage_ASC',
+  FilterAcVoltageDesc = 'filterAcVoltage_DESC',
+  FilterDcVoltageAsc = 'filterDcVoltage_ASC',
+  FilterDcVoltageDesc = 'filterDcVoltage_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
@@ -1453,8 +1466,9 @@ export enum ComponentHeroCarouselOrder {
 }
 
 /** The carousel displaying various icons that is located on the landing page [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentIconCarousel) */
-export type ComponentIconCarousel = Entry & {
+export type ComponentIconCarousel = Entry & _Node & {
   __typename?: 'ComponentIconCarousel';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   iconCarouselCollection?: Maybe<ComponentIconCarouselIconCarouselCollection>;
   internalName?: Maybe<Scalars['String']>;
@@ -1586,8 +1600,9 @@ export enum ComponentIconCarouselOrder {
 }
 
 /** Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentInfoBlock) */
-export type ComponentInfoBlock = Entry & {
+export type ComponentInfoBlock = Entry & _Node & {
   __typename?: 'ComponentInfoBlock';
+  _id: Scalars['ID'];
   block1Body?: Maybe<ComponentInfoBlockBlock1Body>;
   block1Image?: Maybe<Asset>;
   block2Body?: Maybe<ComponentInfoBlockBlock2Body>;
@@ -1942,8 +1957,9 @@ export enum ComponentInfoBlockOrder {
 }
 
 /** Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentProductTable) */
-export type ComponentProductTable = Entry & {
+export type ComponentProductTable = Entry & _Node & {
   __typename?: 'ComponentProductTable';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   headline?: Maybe<Scalars['String']>;
   internalName?: Maybe<Scalars['String']>;
@@ -2121,6 +2137,10 @@ export type ComponentProductTableProductsCollection = {
 export enum ComponentProductTableProductsCollectionOrder {
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
+  FilterAcVoltageAsc = 'filterAcVoltage_ASC',
+  FilterAcVoltageDesc = 'filterAcVoltage_DESC',
+  FilterDcVoltageAsc = 'filterDcVoltage_ASC',
+  FilterDcVoltageDesc = 'filterDcVoltage_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
@@ -2138,8 +2158,9 @@ export enum ComponentProductTableProductsCollectionOrder {
 }
 
 /** Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentTextBlock) */
-export type ComponentTextBlock = Entry & {
+export type ComponentTextBlock = Entry & _Node & {
   __typename?: 'ComponentTextBlock';
+  _id: Scalars['ID'];
   body?: Maybe<ComponentTextBlockBody>;
   contentfulMetadata: ContentfulMetadata;
   headline?: Maybe<Scalars['String']>;
@@ -2408,8 +2429,9 @@ export enum EntryOrder {
 }
 
 /** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/footerMenu) */
-export type FooterMenu = Entry & {
+export type FooterMenu = Entry & _Node & {
   __typename?: 'FooterMenu';
+  _id: Scalars['ID'];
   companyAddress?: Maybe<FooterMenuCompanyAddress>;
   contentfulMetadata: ContentfulMetadata;
   copyright?: Maybe<FooterMenuCopyright>;
@@ -2800,8 +2822,9 @@ export type ImageTransformOptions = {
 };
 
 /** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/menuGroup) */
-export type MenuGroup = Entry & {
+export type MenuGroup = Entry & _Node & {
   __typename?: 'MenuGroup';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   featuredPagesCollection?: Maybe<MenuGroupFeaturedPagesCollection>;
   groupLink?: Maybe<MenuGroupGroupLink>;
@@ -3043,8 +3066,9 @@ export enum MenuGroupOrder {
 }
 
 /** Navigation menu in the header [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/navigationMenu) */
-export type NavigationMenu = Entry & {
+export type NavigationMenu = Entry & _Node & {
   __typename?: 'NavigationMenu';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<NavigationMenuLinkingCollections>;
@@ -3149,8 +3173,9 @@ export enum NavigationMenuOrder {
 }
 
 /** Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/page) */
-export type Page = Entry & {
+export type Page = Entry & _Node & {
   __typename?: 'Page';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   extraSectionCollection?: Maybe<PageExtraSectionCollection>;
   internalName?: Maybe<Scalars['String']>;
@@ -3469,8 +3494,9 @@ export type PageTopSectionFilter = {
 export type PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentIconCarousel | ComponentInfoBlock | ComponentTextBlock;
 
 /** Container that holds all the content for the product detail. Enables editors to publish a product, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/productDetailPage) */
-export type ProductDetailPage = Entry & {
+export type ProductDetailPage = Entry & _Node & {
   __typename?: 'ProductDetailPage';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   extraSectionCollection?: Maybe<ProductDetailPageExtraSectionCollection>;
   internalName?: Maybe<Scalars['String']>;
@@ -3642,6 +3668,10 @@ export type ProductDetailPageLinkingCollectionsTopicProductCollectionArgs = {
 export enum ProductDetailPageLinkingCollectionsTopicProductCollectionOrder {
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
+  FilterAcVoltageAsc = 'filterAcVoltage_ASC',
+  FilterAcVoltageDesc = 'filterAcVoltage_DESC',
+  FilterDcVoltageAsc = 'filterDcVoltage_ASC',
+  FilterDcVoltageDesc = 'filterDcVoltage_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
@@ -4122,8 +4152,9 @@ export type ResourceSys = {
 };
 
 /** Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/seo) */
-export type Seo = Entry & {
+export type Seo = Entry & _Node & {
   __typename?: 'Seo';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
   image?: Maybe<Asset>;
@@ -4314,6 +4345,8 @@ export type Sys = {
   environmentId: Scalars['String'];
   firstPublishedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
+  /** The locale that was requested. */
+  locale?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   publishedVersion?: Maybe<Scalars['Int']>;
   spaceId: Scalars['String'];
@@ -4357,8 +4390,9 @@ export type SysFilter = {
 };
 
 /** Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicBusinessInfo) */
-export type TopicBusinessInfo = Entry & {
+export type TopicBusinessInfo = Entry & _Node & {
   __typename?: 'TopicBusinessInfo';
+  _id: Scalars['ID'];
   body?: Maybe<TopicBusinessInfoBody>;
   contentfulMetadata: ContentfulMetadata;
   featuredImage?: Maybe<Asset>;
@@ -4577,8 +4611,9 @@ export enum TopicBusinessInfoOrder {
 }
 
 /** Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicPerson) */
-export type TopicPerson = Entry & {
+export type TopicPerson = Entry & _Node & {
   __typename?: 'TopicPerson';
+  _id: Scalars['ID'];
   avatar?: Maybe<Asset>;
   bio?: Maybe<TopicPersonBio>;
   cardStyle?: Maybe<Scalars['Boolean']>;
@@ -4773,13 +4808,15 @@ export enum TopicPersonOrder {
 }
 
 /** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
-export type TopicProduct = Entry & {
+export type TopicProduct = Entry & _Node & {
   __typename?: 'TopicProduct';
+  _id: Scalars['ID'];
   category?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<TopicProductDescription>;
   featuredImage?: Maybe<Asset>;
-  filters?: Maybe<Array<Maybe<Scalars['String']>>>;
+  filterAcVoltage?: Maybe<Scalars['String']>;
+  filterDcVoltage?: Maybe<Scalars['String']>;
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<TopicProductLinkingCollections>;
   name?: Maybe<Scalars['String']>;
@@ -4812,7 +4849,13 @@ export type TopicProductFeaturedImageArgs = {
 
 
 /** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
-export type TopicProductFiltersArgs = {
+export type TopicProductFilterAcVoltageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct) */
+export type TopicProductFilterDcVoltageArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -4927,8 +4970,9 @@ export type TopicProductDescriptionResourcesInline = ResourceLink & {
 };
 
 /** Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProductFeature) */
-export type TopicProductFeature = Entry & {
+export type TopicProductFeature = Entry & _Node & {
   __typename?: 'TopicProductFeature';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<TopicProductFeatureLinkingCollections>;
@@ -5142,10 +5186,20 @@ export type TopicProductFilter = {
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
-  filters_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filters_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filters_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filters_exists?: InputMaybe<Scalars['Boolean']>;
+  filterAcVoltage?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_contains?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_exists?: InputMaybe<Scalars['Boolean']>;
+  filterAcVoltage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filterAcVoltage_not?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_not_contains?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filterDcVoltage?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_contains?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_exists?: InputMaybe<Scalars['Boolean']>;
+  filterDcVoltage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filterDcVoltage_not?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_not_contains?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -5322,6 +5376,10 @@ export enum TopicProductLinkingCollectionsProductDetailPageCollectionOrder {
 export enum TopicProductOrder {
   CategoryAsc = 'category_ASC',
   CategoryDesc = 'category_DESC',
+  FilterAcVoltageAsc = 'filterAcVoltage_ASC',
+  FilterAcVoltageDesc = 'filterAcVoltage_DESC',
+  FilterDcVoltageAsc = 'filterDcVoltage_ASC',
+  FilterDcVoltageDesc = 'filterDcVoltage_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
@@ -5555,10 +5613,20 @@ export type CfTopicProductNestedFilter = {
   description_exists?: InputMaybe<Scalars['Boolean']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
-  filters_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filters_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filters_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  filters_exists?: InputMaybe<Scalars['Boolean']>;
+  filterAcVoltage?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_contains?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_exists?: InputMaybe<Scalars['Boolean']>;
+  filterAcVoltage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filterAcVoltage_not?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_not_contains?: InputMaybe<Scalars['String']>;
+  filterAcVoltage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filterDcVoltage?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_contains?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_exists?: InputMaybe<Scalars['Boolean']>;
+  filterDcVoltage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  filterDcVoltage_not?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_not_contains?: InputMaybe<Scalars['String']>;
+  filterDcVoltage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -5678,13 +5746,6 @@ export type CftopSectionMultiTypeNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CftopSectionMultiTypeNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CftopSectionMultiTypeNestedFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  headline?: InputMaybe<Scalars['String']>;
-  headline_contains?: InputMaybe<Scalars['String']>;
-  headline_exists?: InputMaybe<Scalars['Boolean']>;
-  headline_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  headline_not?: InputMaybe<Scalars['String']>;
-  headline_not_contains?: InputMaybe<Scalars['String']>;
-  headline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -5708,7 +5769,7 @@ export type CtfBusinessInfoQueryVariables = Exact<{
 
 export type CtfBusinessInfoQuery = { __typename?: 'Query', topicBusinessInfo?: { __typename: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentIconCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'NavigationMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ProductDetailPage', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null };
 
-export type CategoryFieldsFragment = { __typename: 'CategoryTopic', internalName?: string | null, name?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryTopicDescription', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, productsCollection?: { __typename?: 'CategoryTopicProductsCollection', items: Array<{ __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, category?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null } | null> } | null, targetPage?: { __typename?: 'CategoryTopic' } | { __typename?: 'ComponentCta' } | { __typename?: 'ComponentDuplex' } | { __typename?: 'ComponentHeroBanner' } | { __typename?: 'ComponentHeroCarousel' } | { __typename?: 'ComponentIconCarousel' } | { __typename?: 'ComponentInfoBlock' } | { __typename?: 'ComponentProductTable' } | { __typename?: 'ComponentTextBlock' } | { __typename?: 'FooterMenu' } | { __typename?: 'MenuGroup' } | { __typename?: 'NavigationMenu' } | { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | { __typename?: 'ProductDetailPage' } | { __typename?: 'Seo' } | { __typename?: 'TopicBusinessInfo' } | { __typename?: 'TopicPerson' } | { __typename?: 'TopicProduct' } | { __typename?: 'TopicProductFeature' } | null };
+export type CategoryFieldsFragment = { __typename: 'CategoryTopic', internalName?: string | null, name?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryTopicDescription', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, productsCollection?: { __typename?: 'CategoryTopicProductsCollection', items: Array<{ __typename?: 'TopicProduct', name?: string | null, filterDcVoltage?: string | null, filterAcVoltage?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null> } | null, targetPage?: { __typename?: 'CategoryTopic' } | { __typename?: 'ComponentCta' } | { __typename?: 'ComponentDuplex' } | { __typename?: 'ComponentHeroBanner' } | { __typename?: 'ComponentHeroCarousel' } | { __typename?: 'ComponentIconCarousel' } | { __typename?: 'ComponentInfoBlock' } | { __typename?: 'ComponentProductTable' } | { __typename?: 'ComponentTextBlock' } | { __typename?: 'FooterMenu' } | { __typename?: 'MenuGroup' } | { __typename?: 'NavigationMenu' } | { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | { __typename?: 'ProductDetailPage' } | { __typename?: 'Seo' } | { __typename?: 'TopicBusinessInfo' } | { __typename?: 'TopicPerson' } | { __typename?: 'TopicProduct' } | { __typename?: 'TopicProductFeature' } | null };
 
 export type CtfCategoryQueryVariables = Exact<{
   id: Scalars['String'];
@@ -5717,7 +5778,7 @@ export type CtfCategoryQueryVariables = Exact<{
 }>;
 
 
-export type CtfCategoryQuery = { __typename?: 'Query', categoryTopic?: { __typename: 'CategoryTopic', internalName?: string | null, name?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryTopicDescription', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, productsCollection?: { __typename?: 'CategoryTopicProductsCollection', items: Array<{ __typename: 'TopicProduct', name?: string | null, subTitle?: string | null, category?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'TopicProductDescription', json: any } | null, specifications?: { __typename?: 'TopicProductSpecifications', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, pdfFile?: { __typename?: 'Asset', url?: string | null } | null, productGalleryCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null } | null> } | null } | null> } | null, targetPage?: { __typename?: 'CategoryTopic' } | { __typename?: 'ComponentCta' } | { __typename?: 'ComponentDuplex' } | { __typename?: 'ComponentHeroBanner' } | { __typename?: 'ComponentHeroCarousel' } | { __typename?: 'ComponentIconCarousel' } | { __typename?: 'ComponentInfoBlock' } | { __typename?: 'ComponentProductTable' } | { __typename?: 'ComponentTextBlock' } | { __typename?: 'FooterMenu' } | { __typename?: 'MenuGroup' } | { __typename?: 'NavigationMenu' } | { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | { __typename?: 'ProductDetailPage' } | { __typename?: 'Seo' } | { __typename?: 'TopicBusinessInfo' } | { __typename?: 'TopicPerson' } | { __typename?: 'TopicProduct' } | { __typename?: 'TopicProductFeature' } | null } | null };
+export type CtfCategoryQuery = { __typename?: 'Query', categoryTopic?: { __typename: 'CategoryTopic', internalName?: string | null, name?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryTopicDescription', json: any } | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, productsCollection?: { __typename?: 'CategoryTopicProductsCollection', items: Array<{ __typename?: 'TopicProduct', name?: string | null, filterDcVoltage?: string | null, filterAcVoltage?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null> } | null, targetPage?: { __typename?: 'CategoryTopic' } | { __typename?: 'ComponentCta' } | { __typename?: 'ComponentDuplex' } | { __typename?: 'ComponentHeroBanner' } | { __typename?: 'ComponentHeroCarousel' } | { __typename?: 'ComponentIconCarousel' } | { __typename?: 'ComponentInfoBlock' } | { __typename?: 'ComponentProductTable' } | { __typename?: 'ComponentTextBlock' } | { __typename?: 'FooterMenu' } | { __typename?: 'MenuGroup' } | { __typename?: 'NavigationMenu' } | { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | { __typename?: 'ProductDetailPage' } | { __typename?: 'Seo' } | { __typename?: 'TopicBusinessInfo' } | { __typename?: 'TopicPerson' } | { __typename?: 'TopicProduct' } | { __typename?: 'TopicProductFeature' } | null } | null };
 
 export type CtaFieldsFragment = { __typename: 'ComponentCta', headline?: string | null, ctaText?: string | null, urlParameters?: string | null, sys: { __typename?: 'Sys', id: string }, subline?: { __typename?: 'ComponentCtaSubline', json: any } | null, targetPage?: { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'CategoryTopic', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroCarousel', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | null };
 

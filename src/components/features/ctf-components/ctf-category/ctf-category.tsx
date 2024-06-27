@@ -11,6 +11,7 @@ import {SectionHeadlines} from "../../section-headlines"
 
 import {CtfRichtext} from "@src/components/features/ctf-components/ctf-richtext/ctf-richtext"
 import {Breadcrumb} from "@src/components/shared/breadcrumb"
+import {ProductFilter} from "@src/components/shared/product-filter"
 
 const contentfulLoader: ImageLoader = ({src, width, quality}) => {
   const params: Record<string, string | number> = {}
@@ -45,6 +46,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sectionHeadlines: {
     marginBottom: theme.spacing(12),
+  },
+  twoCol: {
+    display: "flex",
+  },
+  productFilter: {
+    width: "240px",
+    borderRight: "1px solid black",
   },
   comparisonTable: {
     display: "flex",
@@ -134,6 +142,14 @@ export const CtfCategory = (props: CategoryFieldsFragment) => {
     productsCollection,
     sys: {id},
   } = props
+
+  const defaultFilter = [
+    {name: "DC Voltage", filterDcVoltage: []},
+    {name: "AC Voltage", filterAcVoltage: []},
+  ]
+
+  const [filter, setFilter] = useState(defaultFilter)
+  const [filteredProducts, setFilteredProducts] = useState(productsCollection?.items)
 
   const classes = useStyles()
   const inspectorMode = useContentfulInspectorMode()
@@ -265,8 +281,6 @@ export const CtfCategory = (props: CategoryFieldsFragment) => {
     }
   }, [resizeGridItems])
 
-  console.log(productsCollection)
-
   return (
     <div ref={gridElement}>
       <Container maxWidth={false} className={classes.section}>
@@ -281,79 +295,87 @@ export const CtfCategory = (props: CategoryFieldsFragment) => {
           />
           {description && <CtfRichtext {...description} />}
           {productsCollection && productsCollection.items.length > 0 && (
-            <div className={classes.comparisonTable}>
-              {productsCollection.items.map(
-                (product, j) =>
-                  product && (
-                    <a
-                      key={product.sys.id}
-                      className={classes.categoryLink}
-                      href={`/product/${product.name?.toLowerCase()}`}
-                    >
-                      <div
-                        className={classes.comparisonTableColumn}
-                        ref={el => {
-                          gridColumnElements.current[j] = el
-                        }}
-                        {...inspectorMode({
-                          entryId: product.sys.id,
-                          fieldId: "internalName",
-                        })}
+            <section className={classes.twoCol}>
+              <ProductFilter
+                products={productsCollection?.items}
+                filter={filter}
+                setFilter={setFilter}
+                setFilteredProducts={setFilteredProducts}
+              />
+              <div className={classes.comparisonTable}>
+                {filteredProducts?.map(
+                  (product, j) =>
+                    product && (
+                      <a
+                        key={product.sys.id}
+                        className={classes.categoryLink}
+                        href={`/product/${product.name?.toLowerCase()}`}
                       >
                         <div
-                          className={classes.featuredImage}
+                          className={classes.comparisonTableColumn}
+                          ref={el => {
+                            gridColumnElements.current[j] = el
+                          }}
                           {...inspectorMode({
                             entryId: product.sys.id,
-                            fieldId: "featuredImage",
+                            fieldId: "internalName",
                           })}
                         >
                           <div
-                            data-equal-size="0"
-                            style={{
-                              height:
-                                gridSizes[`index-0`] === undefined
-                                  ? undefined
-                                  : `${gridSizes[`index-0`]}px`,
-                            }}
-                          >
-                            {product.featuredImage && (
-                              <Image
-                                src={product.featuredImage.url as string}
-                                alt={product.featuredImage.description || ""}
-                                width={product.featuredImage.width as number}
-                                height={product.featuredImage.height as number}
-                                quality={60}
-                                loader={contentfulLoader}
-                                sizes="(min-width: 355px) 355px, 98vw"
-                              />
-                            )}
-                          </div>
-                        </div>
-                        <div
-                          data-equal-size="1"
-                          style={{
-                            height:
-                              gridSizes[`index-1`] === undefined
-                                ? undefined
-                                : `${gridSizes[`index-1`]}px`,
-                          }}
-                        >
-                          <Typography
-                            variant="h2"
-                            className={classes.title}
+                            className={classes.featuredImage}
                             {...inspectorMode({
                               entryId: product.sys.id,
-                              fieldId: "name",
+                              fieldId: "featuredImage",
                             })}
                           >
-                            {product.name}
-                          </Typography>
+                            <div
+                              data-equal-size="0"
+                              style={{
+                                height:
+                                  gridSizes[`index-0`] === undefined
+                                    ? undefined
+                                    : `${gridSizes[`index-0`]}px`,
+                              }}
+                            >
+                              {product.featuredImage && (
+                                <Image
+                                  src={product.featuredImage.url as string}
+                                  alt={product.featuredImage.description || ""}
+                                  width={product.featuredImage.width as number}
+                                  height={product.featuredImage.height as number}
+                                  quality={60}
+                                  loader={contentfulLoader}
+                                  sizes="(min-width: 355px) 355px, 98vw"
+                                />
+                              )}
+                            </div>
+                          </div>
+                          <div
+                            data-equal-size="1"
+                            style={{
+                              height:
+                                gridSizes[`index-1`] === undefined
+                                  ? undefined
+                                  : `${gridSizes[`index-1`]}px`,
+                            }}
+                          >
+                            <Typography
+                              variant="h2"
+                              className={classes.title}
+                              {...inspectorMode({
+                                entryId: product.sys.id,
+                                fieldId: "name",
+                              })}
+                            >
+                              {product.name}
+                            </Typography>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  ),
-              )}
-            </div>
+                      </a>
+                    ),
+                )}
+              </div>
+            </section>
           )}
         </div>
       </Container>

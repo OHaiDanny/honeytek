@@ -47,7 +47,6 @@ export const Breadcrumb = ({
   const parsedCategory = categoryName?.toLowerCase().replaceAll(" ", "-")
   const parsedProduct = productName?.toLowerCase()
 
-  console.log(type)
   return (
     <div>
       <ol className={clsx(classes.breadcrumbList)}>
