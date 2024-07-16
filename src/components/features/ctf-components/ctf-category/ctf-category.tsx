@@ -48,10 +48,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(12),
   },
   twoCol: {
-    display: "flex",
+    display: "block",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
   },
   productFilter: {
-    width: "240px",
     borderRight: "1px solid black",
   },
   comparisonTable: {
@@ -81,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(4),
     maxWidth: "100%",
     paddingLeft: theme.spacing(10),
-    width: "40.5rem",
+    width: "21.5rem",
     [theme.breakpoints.up("md")]: {
       width: "35rem",
     },

@@ -9,7 +9,7 @@ import {HeroBannerFieldsFragment} from "./__generated/ctf-hero-banner.generated"
 import {CtfRichtext} from "@src/components/features/ctf-components/ctf-richtext/ctf-richtext"
 import {PageLink} from "@src/components/features/page-link"
 import LayoutContext, {defaultLayout, useLayoutContext} from "@src/layout-context"
-import {getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT, PRIMARY_COLOR} from "@src/theme"
+import {getColorConfigFromPalette, HEADER_HEIGHT, PRIMARY_COLOR} from "@src/theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -19,10 +19,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     overflow: "hidden",
     position: "relative",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
   },
 
   fullScreen: {
-    minHeight: `calc(100vh - ${HEADER_HEIGHT_MD})`,
     [theme.breakpoints.up("md")]: {
       minHeight: `calc(100vh - ${HEADER_HEIGHT})`,
     },
@@ -34,25 +37,30 @@ const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
     marginLeft: "auto",
     marginRight: "auto",
-    maxWidth: "125.8rem",
-    padding: theme.spacing(5, 0, 33),
+    padding: theme.spacing(5, 0),
     position: "relative",
     width: "100%",
+    textAlign: "center",
     "@media (min-height: 91.2em)": {
       padding: theme.spacing(39, 0, 39),
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "125.8rem",
+      textAlign: "left",
+      padding: theme.spacing(5, 0, 33),
     },
   },
 
   partialBgContainer: {
-    display: "none",
-    height: "100%",
-    left: "50%",
+    height: "300px",
+    left: 0,
     maxWidth: "192rem",
-    position: "absolute",
+    position: "relative",
     top: 0,
-    transform: "translateX(-50%)",
     width: "100%",
     [theme.breakpoints.up("md")]: {
+      position: "absolute",
+      height: "100%",
       display: "block",
     },
   },
@@ -61,18 +69,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "100%",
-    position: "absolute",
+    position: "relative",
     right: 0,
     top: 0,
-    width: "50%",
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      position: "absolute",
+    },
   },
 
   headline: {
     fontSize: "3rem",
     fontWeight: 800,
     lineHeight: 1.08,
-    maxWidth: "44rem",
-    [theme.breakpoints.up("xl")]: {
+    [theme.breakpoints.up("md")]: {
+      width: "60rem",
       fontSize: "3.8rem",
     },
   },
@@ -81,11 +92,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
     lineHeight: 1.56,
     marginTop: theme.spacing(6),
-    maxWidth: "46.9rem",
     "& p": {
       fontSize: "2rem",
-      [theme.breakpoints.up("xl")]: {
-        fontSize: "2rem",
+      [theme.breakpoints.up("md")]: {
+        width: "40rem",
       },
     },
   },

@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
     maxWidth: "126rem",
-    padding: theme.spacing(19, 0, 19),
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
       justifyContent: "center",
@@ -203,7 +202,7 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
               <ImageGallery
                 items={galleryUrls}
                 showNav={false}
-                thumbnailPosition="left"
+                thumbnailPosition="bottom"
                 showPlayButton={false}
                 showFullscreenButton={false}
               />

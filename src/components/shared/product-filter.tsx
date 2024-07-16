@@ -1,10 +1,14 @@
-import {Checkbox, FormControlLabel, FormGroup} from "@mui/material"
+import {Checkbox, FormControlLabel, FormGroup, Theme} from "@mui/material"
 import {makeStyles} from "@mui/styles"
 
 export const ProductFilter = ({products, filter, setFilter, setFilteredProducts}) => {
-  const useStyles = makeStyles(() => ({
+  const useStyles = makeStyles((theme: Theme) => ({
     productFilter: {
-      width: "240px",
+      display: "flex",
+      flexDirection: "column",
+      [theme.breakpoints.up("md")]: {
+        width: "240px",
+      },
     },
   }))
 
